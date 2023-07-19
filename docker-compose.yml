@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  train:
+    container_name: horovod-pytorch
+    build:
+      context: .
+      dockerfile: Dockerfile
