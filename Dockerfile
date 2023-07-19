@@ -5,8 +5,8 @@ ARG filename=pytorch_mnist.py
 
 FROM horovod/horovod:sha-42b2cdf
 
-COPY . /workspace 
+COPY . /workspace
 
 CMD ["horovodrun", "-np", "$num_gpus", "-H", "$host", \
-    "--timeline-filename", "/workspace/timeline/$timeline", \
-    "python3", "/workspace/$filename"]
+  "--timeline-filename", "/workspace/timeline/$timeline", \
+  "python3", "/workspace/$filename"]
