@@ -1,5 +1,12 @@
+ARG num_gpus=4
+ARG host=localhost:4
+ARG timeline=timeline.json
+ARG filename=pytorch_mnist.py
+
 FROM horovod/horovod:sha-42b2cdf
 
-COPY pytorch_mnist.py /workspace/pytorch_mnist.py
+COPY . /workspace 
 
-CMD ["python3", "/workspace/pytorch_mnist.py"]
+CMD ["horovodrun", "-np", "$num_gpus", "-H", "$host", \
+    "--timeline-filename", "/workspace/timeline/$timeline", \
+    "python3", "/workspace/$filename"]

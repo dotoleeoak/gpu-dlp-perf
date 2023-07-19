@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   train:
@@ -6,3 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ./timeline:/workspace/timeline
+      - ~/.ssh:/root/.ssh
+    network_mode: "host"
