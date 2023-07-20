@@ -10,4 +10,5 @@ services:
       - ./timeline:/workspace/timeline
       - ./logs:/workspace/logs
       - ~/.ssh:/root/.ssh
+      - ./cifar10/cifar10:/root/imagenet/cifar10
     network_mode: "host"
