@@ -8,5 +8,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./timeline:/workspace/timeline
+      - ./logs:/workspace/logs
       - ~/.ssh:/root/.ssh
     network_mode: "host"
