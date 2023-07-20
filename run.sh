@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 
-horovodrun -np $num_gpus -H $host --timeline-filename /workspace/timeline/timeline.json \
-  python3 /horovod/examples/pytorch/pytorch_mnist.py
+for i in $(seq 1 $num_gpus); do
+  echo "============== Running with $i GPUs =============="
+  horovodrun -np $i -H $host:$i --timeline-filename /workspace/timeline/timeline_single_$i.json \
+    python3 /horovod/examples/pytorch/pytorch_mnist.py
+  sleep 10
+done
 
 sleep 10
