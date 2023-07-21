@@ -12,3 +12,4 @@ services:
       - ~/.ssh:/root/.ssh
       - ./cifar10/cifar10:/root/imagenet/cifar10
     network_mode: "host"
+    runtime: nvidia
