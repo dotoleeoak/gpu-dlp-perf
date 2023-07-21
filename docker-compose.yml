@@ -11,5 +11,12 @@ services:
       - ./logs:/workspace/logs
       - ~/.ssh:/root/.ssh
       - ./cifar10/cifar10:/root/imagenet/cifar10
-    network_mode: "host"
-    runtime: nvidia
+    network_mode: host
+    shm_size: 16gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 4
+              capabilities: [gpu]
